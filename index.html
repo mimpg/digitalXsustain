@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+  <helmet>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Rubik+Mono+One&amp;display=swap" rel="stylesheet">
+    <style>
+      html, body { margin: 0; padding: 0; background: #F3EFE4; }
+      html { scroll-behavior: smooth; overflow-x: clip; --hdr: 190px; }
+      @media (min-width: 700px) { html { --hdr: 182px; } }
+      @media (min-width: 1100px) { html { --hdr: 125px; } }
+      @media (min-width: 1500px) { html { --hdr: 150px; } }
+      @media (min-width: 1800px) { html { --hdr: 185px; } }
+      body { font-family: 'Hanken Grotesk', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+      a { color: #00009E; text-decoration: none; }
+      a:hover { color: #31563D; }
+      * { box-sizing: border-box; }
+    </style>
+  </helmet>
+  <div style="width:100%;max-width:1920px;margin:0 auto;background:#F3EFE4">
+
+    <header style="position:sticky;top:0;z-index:50;background:#F3EFE4;box-shadow:0 1px 0 rgba(0,0,158,0.12);padding:clamp(20px,3.1vw,60px) clamp(16px,3.5vw,68px) clamp(14px,1.8vw,34px)">
+      <div style="display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:clamp(6px,0.6vw,12px);font-size:clamp(11px,0.94vw,18px);letter-spacing:0.04em;margin-bottom:clamp(8px,0.8vw,16px)">
+        <button onClick="{{ setEn }}" style="{{ enStyle }}">EN</button>
+        <span style="color:#00009E;opacity:0.45">/</span>
+        <button onClick="{{ setFr }}" style="{{ frStyle }}">FR</button>
+        <span style="color:#00009E;opacity:0.45">/</span>
+        <button onClick="{{ setNl }}" style="{{ nlStyle }}">NL</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(10px,1.5vw,28px)">
+        <a href="#top" style="display:inline-block;max-width:100%;border:2px solid #00009E;padding:clamp(3px,0.35vw,7px) clamp(6px,0.65vw,13px);flex:0 0 auto">
+          <span style="font-family:'Rubik Mono One',monospace;font-size:clamp(11px,1.24vw,24px);color:#00009E;letter-spacing:-0.01em;overflow-wrap:anywhere">DIGITAL<span style="display:inline-block;width:0.3em"></span>X<span style="display:inline-block;width:0.3em"></span>SUSTAIN</span>
+        </a>
+        <nav style="display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:clamp(9px,1.35vw,26px)">
+          <a href="#about" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navAbout }}</a>
+          <a href="#format" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navFormat }}</a>
+          <a href="#themes" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navThemes }}</a>
+          <a href="#dates" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navDates }}</a>
+          <a href="#speakers" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navSpeakers }}</a>
+          <a href="#venue" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navVenue }}</a>
+          <a href="#organisers" style="font-size:clamp(13px,1.6vw,31px);color:#00009E">{{ t.navOrganisers }}</a>
+          <a href="#submit" style="font-size:clamp(13px,1.6vw,31px);color:#31563D;background:#BBCE6F;border:2px solid #31563D;border-radius:999px;padding:clamp(2px,0.35vw,7px) clamp(9px,1.1vw,22px)">{{ t.navSubmit }}</a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="top" style="background-image:url('assets/hero-gradient.jpg');background-size:cover;background-position:center;min-height:clamp(340px,42.2vw,810px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(40px,6vw,115px) clamp(16px,3.5vw,68px);text-align:center">
+      <div style="border:3px solid #F3EFE4;padding:clamp(6px,0.85vw,16px) clamp(10px,1.4vw,27px)">
+        <h1 style="margin:0;font-family:'Rubik Mono One',monospace;font-size:clamp(15px,4.3vw,69px);line-height:1.05;color:#F3EFE4;letter-spacing:-0.02em;text-transform:uppercase;overflow-wrap:anywhere">DIGITAL<span style="display:inline-block;width:0.34em"></span>X<span style="display:inline-block;width:0.34em"></span>SUSTAIN</h1>
+      </div>
+      <p style="margin:clamp(12px,1.6vw,30px) 0 0;font-size:clamp(19px,2.65vw,51px);line-height:1.2;color:#F3EFE4;font-weight:400">{{ t.heroSub }}</p>
+      <p style="margin:clamp(22px,3.9vw,75px) 0 0;font-size:clamp(14px,1.875vw,36px);color:#F3EFE4;font-weight:700">{{ t.heroMeta }}</p>
+    </section>
+
+    <section id="about" style="scroll-margin-top:var(--hdr, 120px);background:#F3EFE4;padding:clamp(46px,8.7vw,168px) clamp(16px,6.6vw,128px) clamp(38px,5.5vw,105px)">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(18px,1.5vw,28px)">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(18px,1vw,20px);align-items:flex-start">
+          <h2 style="flex:1 1 200px;max-width:clamp(120px,25vw,480px);margin:0;font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#3D3D3B;font-weight:700">{{ t.aboutTitle }}</h2>
+          <div style="flex:2.4 1 320px;max-width:845px;font-size:clamp(15px,1.875vw,36px);line-height:1.34;color:#3D3D3B">
+            <p style="margin:0;font-weight:700">{{ t.aboutLead }}</p>
+            <p style="margin:1.34em 0 0">{{ t.aboutP1 }}</p>
+            <p style="margin:1.34em 0 0">{{ t.aboutP2 }}</p>
+            <p style="margin:1.34em 0 0">{{ t.aboutP3 }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="format" style="scroll-margin-top:var(--hdr, 120px);background:#BBCE6F;padding:clamp(46px,8.75vw,168px) clamp(16px,6.6vw,128px) clamp(40px,7.8vw,150px)">
+      <h2 style="margin:0 0 clamp(22px,4.5vw,86px);font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#31563D;font-weight:700">{{ t.formatsTitle }}</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(26px,2vw,38px)">
+        <div style="flex:53 1 300px;font-size:clamp(15px,1.875vw,36px);line-height:1.67;color:#31563D;max-width:820px">
+          <p style="margin:0">{{ t.formatsIntro }}</p>
+          <p style="margin:1.15em 0 0">{{ t.formatsP1 }}</p><p style="margin:1.15em 0 0">{{ t.formatsP2 }}</p>
+
+
+
+
+
+        </div>
+        <div style="flex:47 1 300px;font-size:clamp(16px,2.08vw,40px);line-height:1.35;color:#31563D">
+          <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="4">
+            <div style="margin-bottom:clamp(10px,1.15vw,22px)">
+              <span style="background: #FAFF8D; padding: 0.12em 0.25em; box-decoration-break: clone; -webkit-box-decoration-break: clone; font-size: 20px">{{ chip }}</span>
+            </div>
+          </sc-for>
+          <div style="margin-top:clamp(10px,1.15vw,22px)">
+            <span style="background: #FAFF8D; padding: 0.12em 0.25em; font-size: 20px">{{ t.otherLabel }}</span>
+            <span style="font-size:clamp(15px,1.875vw,36px);line-height:1.67"> {{ t.otherPre }}<a href="mailto:cigdem.yonder@ulb.be" style="color:#31563D;font-style:italic;text-decoration:underline">{{ t.otherLink }}</a>{{ t.otherPost }}</span>
+          </div><p style="margin: 1.15em 0 0; font-weight: 700; font-size: 21.825001px">{{ t.langLabel }}</p><p style="margin: 0; font-size: 21.825001px">{{ t.langValue }}</p><p style="margin: 1.15em 0 0; font-weight: 700; font-size: 21.825001px">{{ t.whoLabel }}</p><p style="margin: 0; font-size: 21.825001px">{{ t.whoValue }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes" style="scroll-margin-top:var(--hdr, 120px);background:#31563D;padding:clamp(44px,7.65vw,147px) clamp(16px,6.6vw,128px) clamp(40px,7.3vw,140px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,1vw,20px);align-items:flex-start">
+        <h2 style="flex:1 1 200px;max-width:clamp(120px,25vw,485px);margin:0;font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#BBCE6F;font-weight:700">{{ t.themesTitle }}</h2>
+        <div style="flex:2.4 1 320px;max-width:1000px">
+          <p style="margin:0 0 clamp(20px,2.5vw,48px);font-size:clamp(15px,1.875vw,36px);line-height:1.34;color:#BBCE6F">{{ t.themesIntro }}</p>
+          <sc-for list="{{ themes }}" as="th" hint-placeholder-count="6">
+            <div style="display:flex;gap:clamp(10px,1.15vw,22px);margin-bottom:clamp(18px,2.5vw,48px);font-size:clamp(15px,1.875vw,36px);line-height:1.34">
+              <span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#FAFF8D;font-weight:700">&gt;</span>
+              <p style="margin:0;color:#FAFF8D;font-weight:700">{{ th.label }}<span style="color:#BBCE6F;font-style:italic;font-weight:400"> {{ th.note }}</span></p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="dates" style="scroll-margin-top:var(--hdr, 120px);background:#00009E;padding:clamp(40px,6.9vw,133px) clamp(16px,6.6vw,128px) clamp(38px,6.8vw,131px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,1vw,20px);align-items:flex-start">
+        <h2 style="flex:1 1 200px;max-width:clamp(120px,26vw,504px);margin:0;font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#F3EFE4;font-weight:700">{{ t.datesTitle }}</h2>
+        <div style="flex:2.3 1 320px;display:grid;grid-template-columns:minmax(0,51%) minmax(0,49%);gap:clamp(8px,1vw,20px) clamp(12px,1vw,20px);font-size:clamp(15px,1.875vw,36px);line-height:1.34;color:#F3EFE4">
+          <sc-for list="{{ dates }}" as="d" hint-placeholder-count="4">
+            <div style="display:contents">
+              <div style="font-weight:700;padding-bottom:clamp(10px,2.1vw,40px)">{{ d.label }}</div>
+              <div style="padding-bottom:clamp(10px,2.1vw,40px)">{{ d.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers" style="scroll-margin-top:var(--hdr, 120px);background:#F3EFE4;padding:clamp(44px,7.6vw,146px) clamp(16px,4.2vw,81px) clamp(40px,8.4vw,161px)">
+      <h2 style="margin:0 0 clamp(26px,6.2vw,120px);font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#31563D;font-weight:700;padding-left:clamp(0px,2.45vw,47px)">{{ t.speakersTitle }}</h2>
+      <p style="margin:0;padding-left:clamp(0px,2.45vw,47px);font-size:clamp(16px,2.08vw,40px);line-height:1.3;color:#31563D;font-style:italic">{{ t.speakersTba }}</p>
+    </section>
+
+    <section id="venue" style="scroll-margin-top:var(--hdr, 120px);position:relative;background-image:url('assets/venue.jpg');background-size:cover;background-position:center;min-height:clamp(360px,80vw,1536px);display:flex;align-items:center;justify-content:flex-end;padding:clamp(24px,4.3vw,82px)">
+      <div style="width:min(773px,52%);min-width:250px;background:#00009E;padding:clamp(18px,5.7vw,110px) clamp(16px,4.6vw,88px)">
+        <p style="margin:0 0 clamp(10px,3vw,58px);font-size:clamp(18px,3.125vw,60px);line-height:1.1;color:#F3EFE4;font-weight:700">{{ t.venueLabel }}<span style="font-size:clamp(14px,2.08vw,40px)"> {{ t.venuePlace }}</span></p>
+        <p style="margin:0;font-size:clamp(13px,2.08vw,40px);line-height:1.5;color:#F3EFE4">{{ t.venueAddress }}</p>
+        <p style="margin:clamp(10px,3vw,58px) 0 0;font-size:clamp(13px,2.08vw,40px);line-height:1.5;color:#F3EFE4">{{ t.venueTransit }}</p>
+      </div>
+    </section>
+
+    <section id="organisers" style="scroll-margin-top:var(--hdr, 120px);background:#F3EFE4;padding:clamp(36px,5.7vw,109px) clamp(16px,6.6vw,128px) clamp(38px,6.9vw,132px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(18px,1vw,20px);align-items:flex-start">
+        <h2 style="flex:1 1 200px;max-width:clamp(120px,25vw,480px);margin:0;font-size:clamp(26px,3.125vw,60px);line-height:1.1;color:#3D3D3B;font-weight:700">{{ t.organisersTitle }}</h2>
+        <div style="flex:2.4 1 320px;max-width:900px;font-size:clamp(15px,1.875vw,36px);line-height:1.34;color:#3D3D3B">
+          <p style="margin:0">{{ t.orgP1 }}</p>
+          <p style="margin:1.34em 0 0">{{ t.orgP2 }}</p>
+          <p style="margin:1.34em 0 0">{{ t.orgP3 }} <a href="https://mimpg.be" style="color:#3D3D3B;text-decoration:underline">{{ t.orgLink }}</a></p>
+          <h3 style="margin:1.9em 0 0.55em;font-size:clamp(14px,1.35vw,26px);line-height:1.25;color:#3D3D3B;font-weight:700">{{ t.committeeTitle }}</h3>
+          <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.35em clamp(16px,2vw,38px);font-size:clamp(14px,1.25vw,24px);line-height:1.45;color:#3D3D3B">
+            <sc-for list="{{ committee }}" as="member" hint-placeholder-count="11">
+              <li>{{ member }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="submit" style="scroll-margin-top:var(--hdr, 120px);background-image:url('assets/cta-gradient.jpg');background-size:cover;background-position:center;padding:clamp(44px,7.55vw,145px) clamp(16px,11.6vw,224px) clamp(40px,8.1vw,156px)">
+      <h2 style="margin:0;font-size:clamp(28px,3.75vw,72px);line-height:1.1;color:#FFFFFF;font-weight:700">{{ t.ctaTitle }}</h2>
+      <p style="margin:clamp(16px,3.3vw,64px) 0 0;max-width:1300px;font-size:clamp(16px,2.5vw,48px);line-height:1.25;color:#FFFFFF">{{ t.ctaBody }}</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(14px,4vw,77px);margin-top:clamp(22px,4.6vw,88px)">
+        <a href="https://forms.cloud.microsoft/e/hcJa7s4mBj" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-width:clamp(200px,25.6vw,491px);min-height:clamp(48px,6vw,116px);padding:clamp(10px,1.4vw,26px) clamp(18px,2.4vw,46px);text-align:center;border:3px solid #FFFFFF;border-radius:999px;font-size:clamp(16px,2.5vw,48px);line-height:1.15;font-weight:700;color:#FFFFFF">{{ t.ctaSend }}</a>
+        <a href="mailto:cigdem.yonder@ulb.be?subject=Question" style="display:inline-flex;align-items:center;justify-content:center;min-width:clamp(200px,25.6vw,493px);min-height:clamp(48px,6vw,116px);padding:clamp(10px,1.4vw,26px) clamp(18px,2.4vw,46px);text-align:center;border:3px solid #FFFFFF;border-radius:999px;font-size:clamp(16px,2.5vw,48px);line-height:1.15;font-weight:700;color:#FFFFFF">{{ t.ctaAsk }}</a>
+      </div>
+    </section>
+
+    <footer style="background:#111C0A;padding:clamp(20px,4.5vw,86px) clamp(16px,10.4vw,200px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(18px,3vw,58px)">
+        <img src="assets/logo-ulb.png" alt="Université libre de Bruxelles" style="width:clamp(110px,15.4vw,295px);max-width:100%;height:auto;display:block;flex:0 1 auto">
+        <img src="assets/logo-uclouvain.png" alt="UCLouvain" style="width:clamp(70px,9.4vw,180px);max-width:100%;height:auto;display:block;flex:0 1 auto">
+        <img src="assets/logo-isit.png" alt="ISIT — Institute for Sustainable IT" style="width:clamp(112px,15.6vw,300px);max-width:100%;height:auto;display:block;flex:0 1 auto">
+        <img src="assets/logo-innoviris.png" alt="Innoviris Brussels" style="width:clamp(130px,18.2vw,350px);max-width:100%;height:auto;display:block;flex:0 1 auto">
+      </div>
+    </footer>
+  </div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;nl&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Language&quot;}}">
+const STRINGS = {
+  en: {
+    navAbout: 'About', navFormat: 'Formats', navThemes: 'Themes', navDates: 'Dates',
+    navSpeakers: 'Speakers', navVenue: 'Venue', navOrganisers: 'Organizers', navSubmit: 'Submit',
+    heroSub: 'Cross-sectoral Dialogue for Digital Futures',
+    heroMeta: '17\u201318 March 2027 | USquare, Brussels',
+    aboutTitle: 'About',
+    aboutLead: 'DIGITAL X SUSTAIN is a two-day, hands-on event on the sustainability of our digital and physical worlds.',
+    aboutP1: 'While the digital transition is seen as a motor to enable green transitions, this perspective also has some critics. Researchers and civil society organizations have been drawing attention to potential discrepancies between digital and sustainability goals. They are notably highlighting questions around public participation, social impacts, and the environmental impact of digitalization, including electricity consumption, water consumption, extraction of rare materials, and e-waste, all of which require public discourse and policy reforms.',
+    aboutP2: 'While adoption and criticism occur in parallel, proponents and opponents rarely meet in dialogue. This limits creative innovations that can be born out of constructive disagreements. We aim to bring various perspectives into focus by inviting stakeholders from different sectors to engage in dialogue.',
+    aboutP3: 'We invite practitioners from public, private, and associative sectors, as well as researchers, artists, designers, and residents, who engage in projects that foster or question the sustainability issues related to the internet and digital technologies, to present their work and ideas in traditional and innovative formats.',
+    formatsTitle: 'Formats',
+    formatsIntro: 'You can submit your work in various formats. We encourage diverse modes of expression and dialogue alongside more traditional ones.',
+    formatsP1: 'You are expected to submit a 500-word abstract outlining your contributions and presentation approach. Submissions will be reviewed based on relevance to conference themes and contribution to a diverse, public-facing program.',
+    formatsP2: 'Accepted abstracts appear in the conference program, with publication opportunities to be confirmed closer to the event. This is an on-site event; authors need to present in person.',
+    langLabel: 'Language', langValue: 'English, French & Dutch',
+    whoLabel: 'Who it\u2019s for?', whoValue: 'Public sector, industry, researchers, artists, civil society organizations',
+    chips: ['> Talks, Presentations & Panels', '> Workshops', '> Exhibition', '> Performance'],
+    otherLabel: '> Other:',
+    otherPre: 'If you have any other ideas or proposals that don\u2019t fit into any of the categories,',
+    otherLink: 'please share them with us',
+    otherPost: '. We can then discuss how to create a space for them during the event.',
+    themesTitle: 'Themes',
+    themesIntro: 'Some of the themes we want to address during these two days are as follows:',
+    themes: [
+      { label: 'Twin transitions', note: '' },
+      { label: 'Environmental footprint of the internet:', note: 'from the materiality of infrastructures to data and energy-related questions' },
+      { label: 'Digital efficiency vs. sufficiency perspectives', note: '' },
+      { label: 'Digital sustainability in digital policy and governance', note: '' },
+      { label: 'Commons and the internet as a common good', note: '' },
+      { label: 'Community-based investigations and interventions', note: '' }
+    ],
+    datesTitle: 'Dates',
+    dates: [
+      { label: 'Submission Deadline', value: '30 November 2026' },
+      { label: 'Letters of Acceptance', value: '15 January 2027' },
+      { label: 'Registration Deadline', value: '15 February 2027' },
+      { label: 'Conference Days', value: '17\u201318 March 2027' }
+    ],
+    speakersTitle: 'Confirmed Speakers',
+    speakersTba: 'To be announced\u2026',
+    venueLabel: 'Venue,', venuePlace: 'USquare, Brussels',
+    venueAddress: 'Av. de la Couronne 227, 1050 Bruxelles',
+    venueTransit: 'a 5-minute walk from Brussels-Etterbeek Station, and a 30-minute ride from Brussels-Central Station on bus 95 or 71',
+    organisersTitle: 'Organizers',
+    orgP1: 'DIGITAL X SUSTAIN is organized by the MImPG research consortium, funded by Innoviris.',
+    orgP2: 'This consortium, formed by ULB, UCLouvain and ISIT, investigates possibilities of a post-growth metropolitan internet for the Brussels-Capital Region.',
+    orgP3: 'Want to learn more about the MImPG project?', orgLink: 'Visit our website.',
+    committeeTitle: 'Organizing committee',
+    committee: ['Marion Allard (UCLouvain)', 'Tom Barbette (UCLouvain)', 'Iness Ben Guirat (ULB)', 'David Bol (UCLouvain)', 'Jason Kayembe (ULB)', 'J\u00E9r\u00F4me Louveaux (UCLouvain)', 'Alessandro Maggi (UCLouvain)', 'Jan Tobias M\u00FChlberg (ULB)', 'Fanny Sbaraglia (ULB)', '\u00C7i\u011Fdem Y\u00F6nder (ULB)', 'Apolline Zehner (ULB)'],
+    ctaTitle: 'Submit your proposal',
+    ctaBody: 'Proposals are welcome until 30 November 2026. We will inform you about the acceptance of your proposal by 15 January 2027.',
+    ctaSend: 'Send a proposal', ctaAsk: 'Ask a question'
+  },
+  fr: {
+    navAbout: '\u00C0 propos', navFormat: 'Formats', navThemes: 'Th\u00E8mes', navDates: 'Dates',
+    navSpeakers: 'Intervenant\u00B7es', navVenue: 'Lieu', navOrganisers: 'Organisateurs', navSubmit: 'Soumettre',
+    heroSub: 'Dialogue intersectoriel pour des futurs num\u00E9riques',
+    heroMeta: '17\u201318 mars 2027 | USquare, Bruxelles',
+    aboutTitle: '\u00C0 propos',
+    aboutLead: 'DIGITAL X SUSTAIN est un \u00E9v\u00E9nement participatif de deux jours consacr\u00E9 \u00E0 la durabilit\u00E9 de nos mondes num\u00E9rique et physique.',
+    aboutP1: 'Si la transition num\u00E9rique est consid\u00E9r\u00E9e comme un moteur des transitions \u00E9cologiques, cette perspective fait aussi l\u2019objet de critiques. Des chercheur\u00B7es et des organisations de la soci\u00E9t\u00E9 civile attirent l\u2019attention sur les \u00E9carts possibles entre les objectifs num\u00E9riques et les objectifs de durabilit\u00E9. Elles soul\u00E8vent notamment des questions sur la participation citoyenne, les impacts sociaux et l\u2019impact environnemental de la num\u00E9risation : consommation d\u2019\u00E9lectricit\u00E9, consommation d\u2019eau, extraction de mat\u00E9riaux rares et d\u00E9chets \u00E9lectroniques, autant de sujets qui appellent un d\u00E9bat public et des r\u00E9formes politiques.',
+    aboutP2: 'Si l\u2019adoption et la critique avancent en parall\u00E8le, partisans et opposants se rencontrent rarement pour dialoguer. Cela limite les innovations cr\u00E9atives qui pourraient na\u00EEtre de d\u00E9saccords constructifs. Nous souhaitons mettre en perspective diff\u00E9rents points de vue en invitant des acteurs de secteurs vari\u00E9s \u00E0 dialoguer.',
+    aboutP3: 'Nous invitons les praticien\u00B7nes des secteurs public, priv\u00E9 et associatif, ainsi que les chercheur\u00B7es, artistes, designers et habitant\u00B7es dont les projets soutiennent ou questionnent les enjeux de durabilit\u00E9 li\u00E9s \u00E0 l\u2019internet et aux technologies num\u00E9riques, \u00E0 pr\u00E9senter leurs travaux et leurs id\u00E9es dans des formats traditionnels comme innovants.',
+    formatsTitle: 'Formats',
+    formatsIntro: 'Vous pouvez soumettre votre travail sous diff\u00E9rents formats. Nous encourageons des modes d\u2019expression et de dialogue vari\u00E9s, \u00E0 c\u00F4t\u00E9 des plus traditionnels.',
+    formatsP1: 'Vous \u00EAtes invit\u00E9\u00B7es \u00E0 soumettre un r\u00E9sum\u00E9 de 500 mots pr\u00E9sentant vos contributions et votre approche de pr\u00E9sentation. Les propositions seront \u00E9valu\u00E9es en fonction de leur pertinence par rapport aux th\u00E8mes de la conf\u00E9rence et de leur apport \u00E0 un programme diversifi\u00E9 et ouvert au public.',
+    formatsP2: 'Les r\u00E9sum\u00E9s accept\u00E9s figureront dans le programme de la conf\u00E9rence ; les possibilit\u00E9s de publication seront confirm\u00E9es \u00E0 l\u2019approche de l\u2019\u00E9v\u00E9nement. Il s\u2019agit d\u2019un \u00E9v\u00E9nement en pr\u00E9sentiel : les auteur\u00B7es doivent pr\u00E9senter sur place.',
+    langLabel: 'Langue', langValue: 'Anglais, fran\u00E7ais et n\u00E9erlandais',
+    whoLabel: 'Pour qui ?', whoValue: 'Secteur public, industrie, chercheur\u00B7es, artistes, organisations de la soci\u00E9t\u00E9 civile',
+    chips: ['> Conf\u00E9rences, pr\u00E9sentations et tables rondes', '> Ateliers', '> Exposition', '> Performance'],
+    otherLabel: '> Autre :',
+    otherPre: 'Si vous avez d\u2019autres id\u00E9es ou propositions qui n\u2019entrent dans aucune de ces cat\u00E9gories,',
+    otherLink: 'partagez-les avec nous',
+    otherPost: '. Nous pourrons ensuite voir comment leur cr\u00E9er un espace pendant l\u2019\u00E9v\u00E9nement.',
+    themesTitle: 'Th\u00E8mes',
+    themesIntro: 'Voici quelques th\u00E8mes que nous souhaitons aborder pendant ces deux jours :',
+    themes: [
+      { label: 'Transitions jumelles', note: '' },
+      { label: 'Empreinte environnementale de l\u2019internet :', note: 'de la mat\u00E9rialit\u00E9 des infrastructures aux donn\u00E9es et aux questions \u00E9nerg\u00E9tiques' },
+      { label: 'Efficacit\u00E9 num\u00E9rique versus sobri\u00E9t\u00E9 num\u00E9rique', note: '' },
+      { label: 'Durabilit\u00E9 num\u00E9rique dans les politiques et la gouvernance du num\u00E9rique', note: '' },
+      { label: 'Les communs et l\u2019internet comme bien commun', note: '' },
+      { label: 'Enqu\u00EAtes et interventions ancr\u00E9es dans les communaut\u00E9s', note: '' }
+    ],
+    datesTitle: 'Dates',
+    dates: [
+      { label: 'Date limite de soumission', value: '30 novembre 2026' },
+      { label: 'Lettres d\u2019acceptation', value: '15 janvier 2027' },
+      { label: 'Date limite d\u2019inscription', value: '15 f\u00E9vrier 2027' },
+      { label: 'Jours de conf\u00E9rence', value: '17\u201318 mars 2027' }
+    ],
+    speakersTitle: 'Intervenant\u00B7es confirm\u00E9\u00B7es',
+    speakersTba: '\u00C0 annoncer prochainement\u2026',
+    venueLabel: 'Lieu,', venuePlace: 'USquare, Bruxelles',
+    venueAddress: 'Av. de la Couronne 227, 1050 Bruxelles',
+    venueTransit: '\u00E0 5 minutes \u00E0 pied de la gare de Bruxelles-Etterbeek et \u00E0 30 minutes de la gare de Bruxelles-Central en bus 95 ou 71',
+    organisersTitle: 'Organisateurs',
+    orgP1: 'DIGITAL X SUSTAIN est organis\u00E9 par le consortium de recherche MImPG, financ\u00E9 par Innoviris.',
+    orgP2: 'Ce consortium, form\u00E9 par l\u2019ULB, l\u2019UCLouvain et l\u2019ISIT, explore les possibilit\u00E9s d\u2019un internet m\u00E9tropolitain post-croissance pour la R\u00E9gion de Bruxelles-Capitale.',
+    orgP3: 'Vous voulez en savoir plus sur le projet MImPG ?', orgLink: 'Visitez notre site web.',
+    committeeTitle: 'Comit\u00E9 d\u2019organisation',
+    committee: ['Marion Allard (UCLouvain)', 'Tom Barbette (UCLouvain)', 'Iness Ben Guirat (ULB)', 'David Bol (UCLouvain)', 'Jason Kayembe (ULB)', 'J\u00E9r\u00F4me Louveaux (UCLouvain)', 'Alessandro Maggi (UCLouvain)', 'Jan Tobias M\u00FChlberg (ULB)', 'Fanny Sbaraglia (ULB)', '\u00C7i\u011Fdem Y\u00F6nder (ULB)', 'Apolline Zehner (ULB)'],
+    ctaTitle: 'Soumettez votre proposition',
+    ctaBody: 'Les propositions sont bienvenues jusqu\u2019au 30 novembre 2026. Nous vous informerons de l\u2019acceptation de votre proposition au plus tard le 15 janvier 2027.',
+    ctaSend: 'Envoyer une proposition', ctaAsk: 'Poser une question'
+  },
+  nl: {
+    navAbout: 'Over', navFormat: 'Formats', navThemes: 'Thema\u2019s', navDates: 'Datums',
+    navSpeakers: 'Sprekers', navVenue: 'Locatie', navOrganisers: 'Organisatoren', navSubmit: 'Indienen',
+    heroSub: 'Cross-sectorale dialoog voor digitale toekomsten',
+    heroMeta: '17\u201318 maart 2027 | USquare, Brussel',
+    aboutTitle: 'Over',
+    aboutLead: 'DIGITAL X SUSTAIN is een tweedaags, hands-on evenement over de duurzaamheid van onze digitale en fysieke wereld.',
+    aboutP1: 'Hoewel de digitale transitie wordt gezien als een motor voor groene transities, is er ook kritiek op dat perspectief. Onderzoekers en maatschappelijke organisaties wijzen op mogelijke discrepanties tussen digitale doelen en duurzaamheidsdoelen. Ze stellen daarbij vragen over publieke participatie, sociale gevolgen en de milieu-impact van digitalisering: elektriciteitsverbruik, waterverbruik, winning van zeldzame materialen en e-waste, thema\u2019s die publiek debat en beleidshervorming vragen.',
+    aboutP2: 'Terwijl adoptie en kritiek naast elkaar bestaan, ontmoeten voor- en tegenstanders elkaar zelden in dialoog. Dat beperkt de creatieve innovaties die uit constructieve meningsverschillen kunnen ontstaan. We willen verschillende perspectieven samenbrengen door belanghebbenden uit uiteenlopende sectoren uit te nodigen voor dialoog.',
+    aboutP3: 'We nodigen professionals uit de publieke, private en verenigingssector uit, evenals onderzoekers, kunstenaars, ontwerpers en bewoners die met hun projecten duurzaamheidsvraagstukken rond het internet en digitale technologie ondersteunen of bevragen, om hun werk en idee\u00EBn te presenteren in zowel traditionele als innovatieve vormen.',
+    formatsTitle: 'Formats',
+    formatsIntro: 'U kunt uw werk in verschillende formats indienen. We moedigen naast traditionele ook diverse vormen van expressie en dialoog aan.',
+    formatsP1: 'U wordt gevraagd een abstract van 500 woorden in te dienen waarin u uw bijdrage en uw presentatieaanpak toelicht. Inzendingen worden beoordeeld op relevantie voor de conferentiethema\u2019s en op hun bijdrage aan een divers, publiek toegankelijk programma.',
+    formatsP2: 'Aanvaarde abstracts worden opgenomen in het conferentieprogramma; publicatiemogelijkheden worden dichter bij het evenement bevestigd. Dit is een evenement op locatie: auteurs presenteren in persoon.',
+    langLabel: 'Taal', langValue: 'Engels, Frans en Nederlands',
+    whoLabel: 'Voor wie?', whoValue: 'Publieke sector, industrie, onderzoekers, kunstenaars, maatschappelijke organisaties',
+    chips: ['> Lezingen, presentaties & panels', '> Workshops', '> Tentoonstelling', '> Performance'],
+    otherLabel: '> Andere:',
+    otherPre: 'Heeft u andere idee\u00EBn of voorstellen die in geen van deze categorie\u00EBn passen,',
+    otherLink: 'laat het ons weten',
+    otherPost: '. We bekijken dan samen hoe we er tijdens het evenement ruimte voor kunnen maken.',
+    themesTitle: 'Thema\u2019s',
+    themesIntro: 'Enkele thema\u2019s die we tijdens deze twee dagen willen bespreken:',
+    themes: [
+      { label: 'Dubbele transities', note: '' },
+      { label: 'Ecologische voetafdruk van het internet:', note: 'van de materialiteit van infrastructuur tot data- en energievraagstukken' },
+      { label: 'Digitale effici\u00EBntie versus digitale soberheid', note: '' },
+      { label: 'Digitale duurzaamheid in digitaal beleid en bestuur', note: '' },
+      { label: 'Commons en het internet als gemeengoed', note: '' },
+      { label: 'Onderzoek en interventies vanuit de gemeenschap', note: '' }
+    ],
+    datesTitle: 'Datums',
+    dates: [
+      { label: 'Deadline voor inzendingen', value: '30 november 2026' },
+      { label: 'Aanvaardingsbrieven', value: '15 januari 2027' },
+      { label: 'Inschrijvingsdeadline', value: '15 februari 2027' },
+      { label: 'Conferentiedagen', value: '17\u201318 maart 2027' }
+    ],
+    speakersTitle: 'Bevestigde sprekers',
+    speakersTba: 'Wordt later aangekondigd\u2026',
+    venueLabel: 'Locatie,', venuePlace: 'USquare, Brussel',
+    venueAddress: 'Kroonlaan 227, 1050 Brussel',
+    venueTransit: 'op 5 minuten wandelen van station Brussel-Etterbeek en op 30 minuten van station Brussel-Centraal met bus 95 of 71',
+    organisersTitle: 'Organisatoren',
+    orgP1: 'DIGITAL X SUSTAIN wordt georganiseerd door het onderzoeksconsortium MImPG, gefinancierd door Innoviris.',
+    orgP2: 'Dit consortium, gevormd door ULB, UCLouvain en ISIT, onderzoekt de mogelijkheden van een post-groei metropolitaan internet voor het Brussels Hoofdstedelijk Gewest.',
+    orgP3: 'Meer weten over het MImPG-project ?', orgLink: 'Bezoek onze website.',
+    committeeTitle: 'Organiserend comit\u00E9',
+    committee: ['Marion Allard (UCLouvain)', 'Tom Barbette (UCLouvain)', 'Iness Ben Guirat (ULB)', 'David Bol (UCLouvain)', 'Jason Kayembe (ULB)', 'J\u00E9r\u00F4me Louveaux (UCLouvain)', 'Alessandro Maggi (UCLouvain)', 'Jan Tobias M\u00FChlberg (ULB)', 'Fanny Sbaraglia (ULB)', '\u00C7i\u011Fdem Y\u00F6nder (ULB)', 'Apolline Zehner (ULB)'],
+    ctaTitle: 'Dien uw voorstel in',
+    ctaBody: 'Voorstellen zijn welkom tot 30 november 2026. Uiterlijk 15 januari 2027 laten we u weten of uw voorstel is aanvaard.',
+    ctaSend: 'Voorstel versturen', ctaAsk: 'Een vraag stellen'
+  }
+};
+
+class Component extends DCLogic {
+  state = { lang: null };
+
+  componentDidMount() {
+    const sync = () => {
+      const h = document.querySelector('header');
+      if (!h) return;
+      const px = Math.round(h.offsetHeight) + 'px';
+      document.querySelectorAll('section[id]').forEach(s => { s.style.scrollMarginTop = px; });
+    };
+    sync();
+    window.addEventListener('resize', sync);
+    [100, 400, 1200, 2500].forEach(ms => setTimeout(sync, ms));
+    if (window.ResizeObserver) {
+      const h = document.querySelector('header');
+      if (h) new ResizeObserver(sync).observe(h);
+    }
+    document.addEventListener('click', e => { if (e.target.closest('nav a')) sync(); }, true);
+    let lang = null;
+    try { lang = window.localStorage.getItem('dxs-lang'); } catch (e) {}
+    if (!lang) {
+      const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+      lang = nav === 'fr' ? 'fr' : (nav === 'nl' ? 'nl' : null);
+    }
+    this.setLang(lang || this.props.defaultLang || 'en');
+  }
+
+  setLang(lang) {
+    this.setState({ lang: lang });
+    try { window.localStorage.setItem('dxs-lang', lang); } catch (e) {}
+    try { document.documentElement.lang = lang; } catch (e) {}
+  }
+
+  langBtn(active) {
+    return 'background:none;border:none;cursor:pointer;padding:0;font-family:inherit;font-size:inherit;letter-spacing:inherit;color:#00009E;text-decoration:' +
+    (active ? 'underline' : 'none') + ';font-weight:' + (active ? '700' : '400') + ';opacity:' + (active ? '1' : '0.6');
+  }
+
+  renderVals() {
+    const lang = this.state.lang || this.props.defaultLang || 'en';
+    const t = STRINGS[lang] || STRINGS.en;
+    return {
+      t: t,
+      chips: t.chips,
+      themes: t.themes,
+      dates: t.dates,
+      committee: t.committee,
+      enStyle: this.langBtn(lang === 'en'),
+      frStyle: this.langBtn(lang === 'fr'),
+      nlStyle: this.langBtn(lang === 'nl'),
+      setEn: () => this.setLang('en'),
+      setFr: () => this.setLang('fr'),
+      setNl: () => this.setLang('nl')
+    };
+  }
+}
+
+</script>
+</body>
+</html>
